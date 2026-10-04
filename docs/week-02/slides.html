@@ -33,7 +33,7 @@
     <br />
     Lecture 02
     <br />
-    Neural networks quick recap + AI in Computer Vision part 1 👁️  
+    Foundation LLM models + Prompt engineering
   </div>
     
   <div>Welcome 👩‍🎤🧑‍🎤👨‍🎤</div>
@@ -41,469 +41,212 @@
   <div> By the end of this lecture, we'll have learnt about:
   
      <br /> The theoretical: 
-     <br /> - Introduction to the unit
-     <br /> - Quick revisions on data modalities and neural networks
-     <br />  - AI applications in Computer Vision part 01
-     <br />  - - Image classification, Object detection, Image segmentation, Keypoint detection
+     <br /> - Introduction to Large Language Model
+     <br /> - Introduction to open source LLMs
+     <br />  - Introduction to prompt engineering
+
      <br /> The practical: 
-     <br /> - test(inference) models on hugging face
-     <br /> - test(inference) models from Tensorflow.js
-     <br /> - research on models adopted by Apple Core ML
-    <br /> - test(inference) YOLOv11 on your laptop / google colab notebook
+     <br /> - Prepare an open source language model on CCI workstation and inference it locally
+      <br /> - Prompt engineering practice
+
   
   </div>
   
   <div> First of all, don't forget to confirm your attendence on <a href="https://www.arts.ac.uk/study-at-ual/course-regulations/attendance-policy/attendance-monitoring"> SEAtS App!  </a></div>
 
-  <div> What is this unit about? </div>
-
-  <div> State-of-the-art AI deployment in professional ecosystems, with applications and advanced analytics in a wide range of domains including: </div>
-
-  <div>
-    - Large language model (week 01) 🗣️
-    <br /> 
-    - AI in Computer Vision (week 02, 03) 👁️
-    <br /> 
-    - AI in audio and music (week 04, 05) 🎵
-    <br /> 
-    - AI in 3D and gaming (week 06, 07) 🎮
-    <br /> 
-    - AI in affective computing (week 08) 🧠
-    <br /> 
-    - AI in recommender systems (week 09) 🤖
-    <br /> 
-    - Multi-modal AI (week 10) 🌀
-    <br /> 
-    - Explainable AI (week 11) 🔍
-  </div>
-
-    <div> How to get support?
-    <br /> - Reach out to me and Kayal via Slack or Email 
-     <br /> - The fun of being an autodidact: <a href="https://huggingface.co/"> Hugging Face</a>, <a href="https://www.arts.ac.uk/students/library-services">UAL Library</a>, 
-    <a href="https://chat.openai.com/">ChatGPT but be careful</a>, resources listed on our <a href="https://moodle.arts.ac.uk/course/view.php?id=87940">Moodle Page</a>
-  
-  </div>
-
-    <div> This is a very fun and practice-based unit, to get you ready for your final thesis project and beyond. 
-     <br /> 
-     - We'll play around with a LOT of pre-trained and ready-to-use models during each lecture. 🤗 
-     <br /> 
-     - We expect you to spend 16 hours each week outside the lecture time to do the readings📖, hands-on practice & homework✋ on this unit.
-      <br />  
-      - It will be a very rewarding experience if you put in the effort. We will support you all the way! 🫵
-  
-  </div>
-  
-  
-  <div> any questions so far? </div>
-
-  <div>     
-       About me
-                  <br /> 
-                
-                <a href="xiaowan-yi.com">xiaowan yi</a>: sh-iao one e
-
-                <br />
-                
-                - I was born in Chengdu, China. My city is famous for panda 🐼, taoism ☯️ and spicy food 🌶️.
-                     <br /> 
-                - I live in Surrey Quays now.
-                 <br /> 
-                
-- I'm completing my PhD research in AI&Music at QMUL.
-  <br /> 
-- I make sound and you can find some of my works <a href="https://vimeo.com/user65401583">here</a>.
-    <br /> 
-- I play drums 🥁 for electronic and groovy music.
-  </div>
-
-
-
-  <div> Recap on "data modality"</div>
+  <div> What is a Foundation LLM Model? 🧱</div>
 
   <div> 
-    Data modalities🕶️
-     <br />    
-    Information that we can gather from the world and store in digital systems as "data", are mainly from four modalities:
-      <br />   
-    - 👁️Image (picture, video)
-      <br />   
-    - 📝Text (written language)
-      <br />   
-    - 🎵Audio (music, speech)
-      <br />   
-    - 🧩Tabular(this week's weather in degree celsius, everyone's birthday in this class, sensor data, etc.)
-      <br />  
-      Can you think of any information that is not from the four categories?
-  </div>
-  
-  
-  <div> 
-    Data modalities🕶️
-     <br />    
-    - Each data modality has its own characteristics and challenges for representation, processing and analysis.
-      <br />
-     - We structure our unit syllabus based on the different data modalities, each week focusing on one modality (with a few exceptions).
-      <br />
-  </div>
-
-    <div>
-      Modalities covered in each week:
-      <br />
-    - Large language model 🗣️: text, multi-modal 
+    🧠 Technical explanation:
     <br /> 
-    - AI in Computer Vision (week 02, 03) 👁️: images, multi-modal
+    - A massive AI model trained on a vast quantity of unlabelled data at scale.
     <br /> 
-    - AI in audio and music (week 04, 05) 🎵: audio, multi-modal
+    - Mostly based on the <a href="https://www.youtube.com/watch?v=kCc8FmEb1nY"> Transformer </a> architecture (characterised with attention mechanisms).
     <br /> 
-    - AI in 3D and gaming (week 06, 07) 🎮: images, multi-modal
-    <br /> 
-    - AI in affective computing (week 08) 🧠: text, audio, image
-    <br /> 
-    - AI in recommender systems (week 09) 🤖: tabular, multi-modal
-    <br /> 
-    - Multi-modal AI (week 10) 🌀: well
-    <br /> 
-    - Explainable AI (week 11) 🔍: modality invariant
-  </div>
-
-
-   <div> Recap on neural networks</div>
-
-    <div> 
-    Recap on neural networks 🤖
-     <br />    
-    - Neural networks are a type of machine learning model that are inspired by the structure and function of the biological neural networks.
-      <br />
-    
-    <br />    
-    - Key points:
-      <br />    
-    - - Architectures
-      <br />
-    - - How to train a neural network?
-      <br />
-    - How to inference a neural network?
+    - Trained with unlabelled data using "self-supervised learning" (e.g., guessing the next word in a sentence).
     <br />
-    Recommended reading: 
-     <br />
-   - - <a href="http://neuralnetworksanddeeplearning.com/">Neural Networks and Deep Learning</a> by Michael Nielsen
-     <br />
-    - -  <a href="https://www.deeplearningbook.org/">Deep Learning Book</a> by Ian Goodfellow, Yoshua Bengio and Aaron Courville
+    - "Foundation" means it serves as a base: it can be adapted (e.g., fine-tuned) to a wide range of downstream tasks, rather than being trained for just one specific task.
+    <br />
+    - We also have foundation models for image or audio, in these few weeks we focus on the LLMs - foundation models for language.
   </div>
-
-        <div> 
-    Neural network architecture 🎳
-    <br />    
-    - Neural nets comprise of layers.
-      <br />
-    - There are different types of layers (fully connected, convolutional, recurrent, attention, etc.)
-      <br />
-    - Here is <a href="https://docs.pytorch.org/docs/stable/nn.html">a list of layers implemented by Pytorch</a> (have you used Pytorch before?)
-    </div>
-
-
-
-        <div> 
-    Questions for checking understanding 🤔
-
-    <br />    
-    - What is a MLP?
-      <br />
-    - What is a CNN?
-      <br />
-    - What is a RNN?
-      <br />
-    - What is a Transformer?
-    </div>
-
-      <div> 
-   🤔 How to inference a neural network? The process:
-    <br />  - - feed input data into the model and get the output from the model
-      <br /> - - also called the forward pass
-     <br /> - - also called 'testing' or 'evaluation'
-      <br /> - - inference does not involve backpropagation
-      <br /> !No need to hard memorise!
- </div>
-
-       <div> 
-     🤔 How to train a neural network? The process:
-    <br />  - - feed input data into the model and get the output from the model
-      <br /> - - compare the model output with the ground truth and calculate the loss
-      <br /> - - use backpropagation to update the model parameters
-      <br /> - - repeat the above steps until the model converges
-      <br /> - - this whole process is called training
-      <br /> - - training involves both forward pass and backward pass
-
- </div>
-
-        <div> 
- 
-    🤔 How to train a neural network? The dataset and splits:
-      <br /> - - training is done on a training dataset
-      <br /> - - the trained model is then evaluated on a validation dataset and/or a test dataset
-      <br /> - - the trained model is then deployed for inference on new data
- </div>
-
-        <div> 
-  🤔 How to train a neural network? The hyperparameters: 
-
-      <br /> - - training is done using an optimisation algorithm (e.g. SGD, Adam, etc.)
-      <br /> - - training is done using a loss function (e.g. cross-entropy, MSE, etc.)
-      <br /> - - training is done using a learning rate (e.g. 0.001, 0.01, etc.)
-      <br /> - - training is done using a batch size (e.g. 32, 64, etc.)
-      <br /> - - training is done using a number of epochs (e.g. 10, 20, etc.)
-      <br /> - - training is done using a validation set to monitor overfitting
-      <br /> - - training is done using regularisation techniques (e.g. dropout, weight decay, etc.)
- <br />
-      <br /> !No need to hard memorise! These knowledges are best internalised through hands-on practice.
-    </div>
-
-
-            <div> 
- 
-     📙 Terminologies:
-      <br /> 1️⃣Pre-trained
-      <br /> - - means a ready-to-use model
-      <br /> - - means a model that has been trained on a dataset (often large) and can be fine-tuned on a smaller dataset for a specific task in the future
-       <br />
-      <br /> 2️⃣Fine-tuning 
-      <br /> - - means further training a pre-trained model on a smaller dataset for a specific task
-      <br /> - - means updating the model parameters using backpropagation on the smaller dataset
-      <br /> - - means the model is adapted to the specific task and the dataset
-      <br /> - - means the model is not trained from scratch
-       <br />
-      <br /> 3️⃣Transfer learning
-      <br /> - - means using a pre-trained model for a different but related task
-      <br /> - - also means the model is not trained from scratch
-      <br /> - - fine-tuning is a special case of transfer learning
-      <br /> - - transfer learning can be done without fine-tuning (e.g. using the pre-trained model as a feature extractor and adding new layers to the model for training on the new task)
-    </div>
- </div>
-
-        <div> 
-
-    Recommended reading: 
-     <br />
-   - - <a href="http://neuralnetworksanddeeplearning.com/">Neural Networks and Deep Learning</a> by Michael Nielsen
-     <br />
-    - -  <a href="https://www.deeplearningbook.org/">Deep Learning Book</a> by Ian Goodfellow, Yoshua Bengio and Aaron Courville
-  </div>
-
-
-      <div> AI in Computer Vision part 01 👁️</div>
-
-
-      <div> Computer Vision: a field of AI that teaches computers to "see" and interpret the visual world from images and videos, and derive meaningful information from them. </div>
-
-          <div> First question: how does a model in our computer "see" an image? 👁️ 
-           <br />
-          - Model "sees" an image as numbers!
-           <br />  
-          - Digital images are made of pixels.
-          <br />
-          - Each pixel in the image is represented by a number (or a set of numbers for color images).  
-        </div>  
 
   <div> 
-    👁️ Images represented by numbers:
-     <br />  
-    - Two numbers for its width and height (how many pixels).
-    <br />  
-    e.g. 3840 x 2160 for 4K resolution        
-    <br />      
-    - Sometimes another number for how many color channels there are.
-   <br />      
-    e.g. 256 x 256 x 3 for an RGB color image
-  </div>
-  
-  <div class='layout' style='grid-template-rows:55% 45%;'>
-  <img src='https://cdn.glitch.global/0e13d0b6-6ebc-4330-9873-db7826d23957/pixels.png?v=1696434561327'/>
-  <div>Here is one way to numberify digital images:
-     <br />  
-  - Three numbers for each pixel representing the RGB values in color images, e.g. [256, 0, 128] for purple 🟪
-     <br />     
-  - One number for each pixel representing the greyscale value in grey images, e.g. [128] for a medium grey 🩶</div>
-  <br />     
-  - Put together these color-indicating numbers for all pixels in a multi-dimensional array (also called tensor in deep learning) to represent the image.
-  </div>
-
-
-  <div> After "seeing" the images, what meaningful information a model can derive from them? 👁️</div>
-
-      <div> 
-    👁️ Basic computer vision tasks: 
-     <br />    
-    - Image classification
-      <br />
-    - Object detection
-      <br />
-    - Image segmentation
-      <br />
-    - Keypoint detection
-    
-  </div>
-
-        <div> 
-    👁️ Basic computer vision tasks, characterised by the model (neural network) outputs:
-     <br />    
-    - Image classification: outputs a class label.
-      <br />
-    - Object detection: outputs bounding boxes and class labels.
-      <br />
-    - Image segmentation: outputs pixel-wise masks and class labels.
-      <br />
-    - Keypoint detection: outputs Keypoint and class labels.
-       
-  </div>
-
-
-      <div> 
-    👁️ What exactly "meaningful information", in a more human friendly language, do these tasks derive from images?
-     <br />    
-    - Image classification: what is in the image? 
-      <br />
-    - Object detection: what is in the image and where is it roughly?
-      <br />
-    - Image segmentation: what is in the image and where is it at the finest level?
-      <br />
-    - Keypoint detection: where are the important points/coordinates in the image?
-
-  </div>
-
-
-
-          <div> 
-    👁️ Let's go to <a href="https://huggingface.co/">Hugging Face</a> (have you explored this platform before?) for web-based, ready-to-use models for:
-     <br />    
-    - Image classification
-      <br />
-    - Object detection
-      <br />
-    - Image segmentation
-      <br />
-    - Keypoint detection
-  </div>
-
-           <div> 
-    👁️ Let's go to <a href="https://github.com/tensorflow/tfjs-models/tree/master">Tensorflow.js github repo</a> (have you explored this platform before?) for models and demos for:
-     <br />    
-    - Image classification
-      <br />
-    - Object detection
-      <br />
-    - Image segmentation
-      <br />
-    - Hand/Pose/Facial Keypoint detection
-  </div>
-
-
-
-        <div> fun AI time 🎉
-
-      <br /> Artworks that uses face detection
-      <br /> - <a href="https://notnot.home.xs4all.nl/pareidolia/pareidolia.html">Pareidolia*</a>
-      <br /> - - facial detection is applied to grains of sand. A fully automated robot search engine examines the grains of sand in situ. When the machine finds a face in one of the grains, the portrait is recorded.
-      <br /> - <a href="https://www.youtube.com/watch?v=N-3NwGkF8Pw">Hello </a>
-       <br /> - - a large-scale kinetic sculpture in the form of an ancient Greek architectural pillar which observes its surroundings as if nodding to visitors, moving like a mutated snake.
-    </div>
-
-
-
-    <div> Check out computer vision models adopted by <a href="  https://developer.apple.com/machine-learning/models/">Apple Core ML</a> 
-     <br /> These are the industry-level models.
-     <br /> What attibutes are important for models to be industry standard?
-    </div>
-
-        <div> Check out computer vision models adopted by <a href="  https://developer.apple.com/machine-learning/models/">Apple Core ML</a> 
-     <br /> What attibutes are important for models to be industry standard?
-     <br /> - Performance in accuracy/precision/robustness, size, inference time (speed), etc. 
-
- <br /> ✋Practice:
-      <br /> - Pick one model that can do one of the four basic computer vision tasks, and research on:
-      <br /> - - What is the model name?
-      <br /> - - Is there a public code repository e.g. github?
-      <br /> - - What dataset is the model trained on?
-      <br /> - - What is the size of the model?
-      <br /> - - Any inference time (speed) information?
-      <br /> - - Is the model trained from scratch or fine-tuned on another model?
-      <br /> - - What is the model performance like, on what evaluation metrics?
-      <br /> 👐 Let's share our findings after 25 mins!👐
-    </div>
- 
-
-      <div> 
-    YOLO on <a href="https://github.com/ultralytics/ultralytics">Ultralytics</a> 
-     <br /> 
-     - an advanced computer vision model family first introduced by Joseph Redmon et al. in 2015, now maintained and developed (with different versions) by Ultralytics, known for its high speed, accuracy, and versatility.   
-      <br /> 
-    - are deployed in various industry applications including autonomous vehicles, robotics, text recognition, visual inspection systems, and more.
-      <br />
-    - now it is YOLOv11, though <a href="https://yolov8.com/">YOLOv8</a> is also widely used.
-      <br />  
-    - what is the full name of YOLO?  
-    <br />  
-    - A gentle introduction from the main developer <a href="https://www.youtube.com/watch?v=Cgxsv1riJhI">gentle introduction from the main developer</a>
-    
-  </div>
-
-
-    <div> 
-    YOLO on <a href="https://github.com/ultralytics/ultralytics">Ultralytics</a> 
-     <br /> 
-    - <a href="https://docs.ultralytics.com/tasks/">What are the tasks that YOLOv11 can do?</a>  
-      <br />
-    - What are the outputs of YOLOv11 for each of the tasks?
-
-  </div>
-  
-
-      <div> 
-    YOLO on <a href="https://github.com/ultralytics/ultralytics">Ultralytics</a> 
-     <br />    
-    Hands-on: 
-      <br />
-    - Inference YOLOv11 on the google colab notebook.
-      <br />
-    - Setup YOLOv11 on your laptop and inference YOLOv11 from your laptop.
+    🏢 Commercial Foundation Models (Closed-Source)
     <br />
-    📘 Keep a cool dev note of:
-      <br />
-    - - Error messages you have encountered
+    Models whose weights and architectures are kept private by the companies that made them. You access them via APIs or web interfaces.
     <br />
-    - - Words that you don't understand
+    - <b>OpenAI:</b> GPT-4o, <a href="https://openai.com/index/introducing-gpt-5/"> GPT-5 </a>(You probably have used these via ChatGPT)
     <br /> 
-    - - Things that you find interesting
+    - <b>Anthropic:</b> Claude 3.5 Sonnet, Claude 3 Opus,<a href="https://www.anthropic.com/news/claude-fable-5-mythos-5"> Claude Fable 5, Mythos 5 </a> 
+    <br />
+    - <b>Google:</b> Gemini 1.5 Pro, Gemini 1.5 Flash, <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/">  Gemini 4 Argon </a> 
   </div>
 
-        <div> 
-    YOLO on <a href="https://github.com/ultralytics/ultralytics">Ultralytics</a> 
-     <br />    
-    Homework:
-      <br />
-    - Inference YOLOv11 on your laptop for all 4 tasks, keep a record of the inference time.
+  <div> 
+    🔓 Open Source Foundation Models
     <br />
-    - Setup YOLOv11 on the workstation and inference YOLOv11 from the workstation utilising GPU, keep a record of the inference time.
-    <br />
-    - SEND ME your dev note and inference time records by next Monday!
-    <br />
-    - [Optional but highly rewarding] Fine tuning YOLOv11 on the workstation, using a custom dataset (think of an applicatin that is interesting to you! check public datasets on <a href="https://public.roboflow.com/">roboflow</a> for inspiration).
+    Models where the neural network weights (the learned parameters) are made publicly available for anyone to download, run locally, and modify.
   </div>
 
-          <div> 
+  <div> 
+    🤔 Why are they made open source?
+    <br />
+    - <b>Democratisation:</b> Allowing researchers, hobbyists, and startups to build AI without paying massive API fees.
+    <br />
+    - <b>Transparency & Safety:</b> The community can audit the models for biases and vulnerabilities.
+    <br />
+    - <b>Business Strategy:</b> Big tech companies (like Meta) release them to commoditize some part of it, for example, the model layer, encouraging a global ecosystem of tools built around <i>their</i> architecture rather than competitors'.
+  </div>
+
+  <div> 
+    Summary of Top Open Source LLMs (2024-2025 specs)
+    <br />
+    - <b>Llama 3.1 (Meta):</b> Comes in 8B, 70B, and 405B parameters. 128k context window. Highly capable, industry standard for open weights.
+    <br />
+    - <b>Mistral / Mixtral (Mistral AI):</b> E.g., Mistral NeMo (12B). Known for high efficiency and punching above their weight class.
+    <br />
+    - <b>Gemma 2 (Google):</b> 2B, 9B, 27B parameters. Built from the same research as Gemini. Great for running on local laptops.
+    <br />
+    - <b>Qwen 2.5 (Alibaba):</b> Strong multilingual and coding performance across multiple sizes (from 0.5B to 72B).
+  </div>
+
+  <div> What can we do with these Foundation Models? 🛠️</div>
+
+  <div> 
+    The AI Development Pipeline:
+    <br />
+    - <b>Simple Inference:</b> Asking the model a question and getting an answer. (Today)
+    <br />
+    - <b>Prompt Engineering:</b> Crafting the optimal text input to guide the model's behavior. (Today)
+    <br />
+    - <b>Fine-Tuning:</b> Training the model further on your own custom dataset. (Next weeks)
+    <br />
+    - <b>RAG (Retrieval-Augmented Generation):</b> Connecting the model to external databases/documents. (Next weeks)
+    <br />
+    - <b>Agents:</b> Giving the model tools to act autonomously (browse web, run code). (Next weeks)
+  </div>
+  
+
+  <div> 
+    Recommended watching and reading:
+     <br />
+    - <a href="https://www.ted.com/talks/stephen_wolfram_how_to_think_computationally_about_ai_the_universe_and_everything"> How to think computationally about AI, the universe and everything  </a>
+    <br />
+    - <a href="https://magazine.sebastianraschka.com/p/state-of-llms-2025"> The State Of LLMs 2025: Progress, Problems, and Predictions  </a>
+  
+  </div>
+
+     <div> Research time! For understanding the specs and scales of LLM models and training process.
+    <br /> - Pick one open-source LLM model, search for the answers to
+     <br /> - - 1. what is the training data made of? what is the size?
+     <br /> - - 2. what hardwares have been used for training this model? (GPU model types, VRAM sizes, their numbers, etc,) how long did the training take on the hardwares, if reported? can we estimate the energy consumption?
+   </div>
+  
+  
+  <div> Let's dive into Prompt Engineering 💬</div>
+
+  <div> 
+    What is Prompt Engineering?
+    <br />
+    It is the practice of designing, structuring, and optimizing the input text (prompts) to get the most accurate, relevant, or creative output from a Large Language Model.
+    <br />
+    <i>"Programming in natural language."</i>
+  </div>
+
+  <div> 
+    📝 Prompt Engineering Techniques:
+    <br /><br />
+    <b>1. Zero-shot vs. Few-shot prompting</b>
+    <br />
+    - <i>Zero-shot:</i> Asking the model to do something without giving examples. (e.g., "Translate this to French: Hello")
+    <br />
+    - <i>Few-shot:</i> Providing a few examples in the prompt to show the model the exact format/logic you want before asking the final question.
+  </div>
+
+  <div> 
+    📝 Prompt Engineering Techniques:
+    <br /><br />
+    <b>2. Role-Playing / System Prompts</b>
+    <br />
+    - Assigning a persona to the AI.
+    <br />
+    - E.g., "You are an expert art historian specializing in the Renaissance. Explain..." 
+    <br />
+    - This drastically shifts the vocabulary, tone, and depth of the model's response. [EXPERIMENT IT within some domain/topic that you like]
+  </div>
+
+  <div> 
+    📝 Prompt Engineering Techniques:
+    <br /><br />
+    <b>3. Chain-of-Thought (CoT) Prompting</b>
+    <br />
+    - Encouraging the model to think out loud.
+    <br />
+    - Adding phrases like <i>"Let's think step by step"</i> forces the model to break down complex problems into logical parts, significantly reducing hallucinations and math errors.
+  </div>
+
+  <div> 
+    📝 Prompt Engineering Techniques:
+    <br /><br />
+    <b>4. Output Constraints and Formatting</b>
+    <br />
+    - Telling the model exactly <i>how</i> to present the data.
+    <br />
+    - E.g., "Output the response as a JSON array," "Use a bulleted list," "Keep the response under 50 words," or "Do not use the word 'delve'."
+  </div>
+
+  <div> 
+    Hands-on! [CCI Workstations] 💻
+    <br />
+    Topic: Running an Open Source LLM locally [instruction file on Moodle!]
+    <br />
+    - We will use  <a href="https://ollama.com/"> Ollama </a> (an alternative is LM Studio) to download and run a local instance of smaller LLM models such as `llama3.1` or `gemma2`.
+    <br />
+    - Why locally? Complete privacy, no API costs, works completely offline.
+    <br />
+    - <i>Note:</i> These models run entirely on the workstation's GPU. You will hear the fans spin up!
+  </div>
+
+  <div> 
+    Hands-on! [CCI Workstations] 💻
+    <br />
+    Topic: Prompt Engineering Practice
+    <br />
+    - Open your local model interface.
+    <br />
+    - <b>Task 1:</b> Try a zero-shot prompt, then improve it using few-shot examples. Note the difference.
+    <br />
+    - <b>Task 2:</b> Assign a bizarre role to the model (e.g., a sad toaster) and ask it to perform a task unrelated to the role (e.g., design a study plan for building AI agents).
+    <br />
+    - <b>Task 3:</b> Give it a logic puzzle. Ask it normally, then ask it using "Let's think step by step".
+  </div>
+
+  <div> 
+    Homework 🏠
+    <br />
+    - Run at least 2 different open-source models (e.g., Llama and Gemma) using Ollama on the CCI workstations or your laptop.
+    <br />
+    - Try the exact same complex prompt on both models.
+    <br />
+    - Document the differences in speed, tone, and accuracy in your dev notes!
+  </div>
+
+  <div> 
     🕶️ What we have learnt today:
-      <br />
-    - Recap on data modalities and neural networks
     <br />
-    - Image classification, Object detection, Image segmentation, Keypoint detection
+    - The difference between Foundation Models, Commercial, and Open Source.
     <br />
-    - Played around with pre-trained computer vision models on Hugging Face, Tensorflow.js and Apple Core ML
+    - The specs of top open source models available today.
     <br />
-    - Inspect and inference an example of industry-level computer vision model: YOLOv11
+    - The AI development pathways (Inference, Fine-tuning, RAG, Agents).
+    <br />
+    - Key Prompt Engineering techniques (Few-shot, Role-play, Chain-of-Thought).
+    <br />
+    - How to run an LLM entirely locally on your workstation.
   </div>
   
   <div> 
-    We'll see you next Monday same time and same place!
+    We'll see you next Monday same time and same place! 👋
   </div>
   
 </body>
