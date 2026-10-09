@@ -61,7 +61,9 @@
 
   <div> 🤓 we are talking about: 
      <br /> 
-    - models that can *output* images: what does this tell you about the shape of the last layer of the model?
+    - models that can *output* images! 
+     <br /> 
+    - - what does this tell you about the shape of the last layer of the model?
      <br /> 
     - - The number of neurons in the last layer = [the number of pixels * the number of color channels] in the desired output image. </div>
 
@@ -75,7 +77,7 @@
      <br /> 
     - models that can output images that do not look like the same every time: there should be some sort of randomness in the inference process.
      <br /> 
-    - - We'll see later that all generative models have some sort of "sampling process" to get "randomly sampled vectors" that are of the same shape but have different values everytime sampled. </div>
+    - - We'll see later that all generative models have some sort of "sampling process" to get "randomly sampled vectors" that are of the same shape but have different values randomly generated everytime </div>
 
   
   <div>
@@ -161,8 +163,8 @@
      <br />    
     - It is an ensemble of two neural networks - a Generator (G) and a Discriminator (D).
        <br />    
-     - We have a training dataset that comprises images that you want the model to model from, we would refer to these as "real" images, as opposed to the generated "fake" ones.
- 
+     - Let's say we have prepared a training dataset with nice images to model from, we would refer to these as "real" images, as opposed to the generated "fake" ones.
+
   </div>
 
     
@@ -241,7 +243,8 @@
   
        <div> 
  😎 DIFFUSION!
-         - Let's have some <a href="https://huggingface.co/spaces/stabilityai/stable-diffusion">stable diffusion fun</a>  
+         - Some <a href="https://huggingface.co/spaces/stabilityai/stable-diffusion">stable diffusion</a> fun 
+         <br> (resarch: what is the training dataset? are they copyrighted?)
   </div>
 
       <div> 
@@ -289,9 +292,7 @@ model: forward diffusion and backward diffusion.
    <br />
      - Inference a stable diffusion model from your laptop with the <a href="https://huggingface.co/docs/diffusers/main/en/api/pipelines/stable_diffusion/overview">hugging face library for stable diffusions</a>, it is SO HANDY!
     <br />
-    - SEND ME your dev note by next Monday!
-    <br />
-    - [Optional but highly rewarding] Train a StyleGANX on the workstation, using a custom dataset (think of an applicatin that is interesting to you!).
+    - [Optional but highly rewarding] Inference a StyleGAN on the CCI workstation, using a custom dataset (think of an applicatin that is interesting to you!).
   </div>
 
           <div> 
